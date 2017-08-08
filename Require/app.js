@@ -13,12 +13,18 @@ if (command === 'list') {
   if (note === undefined) {
     console.log('Note titles must be unique');
   } else {
-    console.log(note);
+    notes.logNote(note);
   }
 } else if (command === 'remove') {
-  notes.removeNote(argv.title);
+  let noteRemoved = notes.removeNote(argv.title);
+  console.log((noteRemoved) ? `${argv.title} removed` : 'There is no note by that name');
 } else if (command === 'read') {
-  notes.readNote(command);
+  let note = notes.getNote(argv.title);
+  if (note) {
+    notes.logNote(note);
+  } else {
+    console.log('There is no note with that title');
+  }
 } else {
   console.log('Unknown command');
 }
