@@ -9,7 +9,12 @@ const command = argv._[0];
 if (command === 'list') {
   note.getAll();
 } else if (command === 'add') {
- notes.addNote(argv.title, argv.body);
+  let note = notes.addNote(argv.title, argv.body);
+  if (note === undefined) {
+    console.log('Note titles must be unique');
+  } else {
+    console.log(note);
+  }
 } else if (command === 'remove') {
   notes.removeNote(argv.title);
 } else if (command === 'read') {
