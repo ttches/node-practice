@@ -30,7 +30,8 @@ const addNote = (title, body) => {
 };
 
 const getAll = () => {
-  console.log('Getting all notes');
+  let notes = fetchNotes();
+  notes.forEach(logNote);
 };
 
 const getNote = (title) => {
